@@ -1,0 +1,79 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package br.edu.ifpe.garanhuns.infoco.dados.genericos;
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ *
+ * @author lucas
+ * @param <Tipo>
+ */
+public abstract class RepositorioMemoria<Tipo extends Persistivel> implements Repositorio<Tipo> {
+
+    private final Map<Long,Tipo> elementos = new HashMap<>();
+    private static long maxid = 1;
+    
+    @Override
+    public void adicionar(Tipo t){
+        t.setId(maxid++);
+        elementos.put(t.getId(), t);
+    }
+
+    @Override
+    public void remover(long id) {
+        elementos.remove(id);
+    }
+
+    @Override
+    public void remover(Tipo t) {
+        elementos.remove(t);
+    }
+
+    @Override
+    public void alterar(Tipo t) {
+        try {
+            elementos.get(t.getId()).alterar(t);
+        } catch(NullPointerException e) {
+            return;
+        }
+    }
+
+    @Override
+    public List<Tipo> recuperar() {
+        ArrayList<Tipo> al = new ArrayList<>();
+        for (Map.Entry<Long, Tipo> e : elementos.entrySet()) {
+            al.add(e.getValue());
+        }
+        return al;
+    }
+
+    @Override
+    public Tipo recuperar(long id) {
+        return elementos.get(id);
+    }
+
+    @Override
+    public boolean existe(Tipo t) {
+        return existe(t.getId());
+    }
+
+    @Override
+    public boolean existe(long id) {
+        return elementos.containsKey(id);
+    }
+
+    @Override
+    public int getQuantidade() {
+        return elementos.size();
+    }
+
+}

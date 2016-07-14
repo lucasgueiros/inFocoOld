@@ -1,5 +1,7 @@
 package br.edu.ifpe.garanhuns.infoco.dominio;
 
+import br.edu.ifpe.garanhuns.infoco.dados.genericos.Persistivel;
+
 /**
  *
  * Esse é um horário de aula. Ele indica algo do tipo:
@@ -9,7 +11,7 @@ package br.edu.ifpe.garanhuns.infoco.dominio;
  *
  * Created by lucas on 09/07/16.
  */
-public class Horario {
+public class Horario implements Persistivel {
 
     // Atributos
     // Essa classe tem os seguinte atributos:

@@ -13,4 +13,24 @@
         android:id="@+id/BemBindoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Bem Vindo Text"
+        android:id="@+id/BemVindoText"
+        android:layout_alignTop="@+id/BemBindoText"
+        android:layout_toEndOf="@+id/BemBindoText" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inserir Grade de Horários"
+        android:id="@+id/insereGradeHorarioButton"
+        android:layout_below="@+id/BemVindoText"
+        android:layout_toEndOf="@+id/BemBindoText"
+        android:enabled="true"
+        android:onClick="inserirGradeHorario" />
+
 </RelativeLayout>
